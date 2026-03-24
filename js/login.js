@@ -1,3 +1,23 @@
+const REDIRECT_MS = 1800;
+
+function showSuccessThenRedirect(message, url) {
+  const err = document.getElementById("err");
+  const success = document.getElementById("success");
+  const formBlock = document.getElementById("form-block");
+  const nav = document.getElementById("login-nav");
+
+  err.style.display = "none";
+  formBlock.style.display = "none";
+  if (nav) nav.style.display = "none";
+
+  success.textContent = message;
+  success.style.display = "block";
+
+  setTimeout(() => {
+    window.location.href = url;
+  }, REDIRECT_MS);
+}
+
 document.getElementById("login-form").addEventListener("submit", (e) => {
   e.preventDefault();
   const username = document.getElementById("username").value.trim();
@@ -15,12 +35,18 @@ document.getElementById("login-form").addEventListener("submit", (e) => {
 
   if (tryAdminLogin(username, password)) {
     setAdminSession();
-    window.location.href = "admin.html";
+    showSuccessThenRedirect(
+      "Login successful. Redirecting to the admin panel…",
+      "admin.html"
+    );
     return;
   }
 
   if (findUser(username, password)) {
-    window.location.href = "index.html";
+    showSuccessThenRedirect(
+      "Login successful. Redirecting to the home page…",
+      "index.html"
+    );
     return;
   }
 

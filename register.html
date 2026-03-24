@@ -14,6 +14,14 @@
       </header>
       <div class="card">
         <div id="err" class="msg err" style="display: none"></div>
+        <div
+          id="success"
+          class="msg ok"
+          style="display: none"
+          role="status"
+          aria-live="polite"
+        ></div>
+        <div id="form-block">
         <form id="register-form">
           <label for="reg-username">Username</label>
           <input
@@ -33,7 +41,8 @@
           />
           <button type="submit" class="btn">Create account</button>
         </form>
-        <p class="nav-links">
+        </div>
+        <p class="nav-links" id="register-nav">
           Already have an account? <a href="login.html">Log in</a> ·
           <a href="index.html">Home</a>
         </p>

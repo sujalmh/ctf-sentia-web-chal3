@@ -1,3 +1,24 @@
+const REDIRECT_MS = 1800;
+
+function showRegistrationSuccess() {
+  const err = document.getElementById("err");
+  const success = document.getElementById("success");
+  const formBlock = document.getElementById("form-block");
+  const nav = document.getElementById("register-nav");
+
+  err.style.display = "none";
+  formBlock.style.display = "none";
+  if (nav) nav.style.display = "none";
+
+  success.textContent =
+    "Registration successful. Redirecting to the home page…";
+  success.style.display = "block";
+
+  setTimeout(() => {
+    window.location.href = "index.html";
+  }, REDIRECT_MS);
+}
+
 document.getElementById("register-form").addEventListener("submit", (e) => {
   e.preventDefault();
   const username = document.getElementById("reg-username").value.trim();
@@ -25,5 +46,5 @@ document.getElementById("register-form").addEventListener("submit", (e) => {
     return;
   }
 
-  window.location.href = "index.html";
+  showRegistrationSuccess();
 });
