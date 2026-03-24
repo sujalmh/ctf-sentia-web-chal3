@@ -24,3 +24,16 @@ function clearAdminSession() {
 function tryAdminLogin(username, password) {
   return username === ADMIN_USERNAME && password === ADMIN_PASSWORD;
 }
+
+const WELCOME_USER_KEY = "sentia_welcome_user";
+
+function setWelcomeBanner(username) {
+  sessionStorage.setItem(WELCOME_USER_KEY, username);
+}
+
+/** Returns username once, then clears it so refresh does not repeat the banner. */
+function takeWelcomeBanner() {
+  const u = sessionStorage.getItem(WELCOME_USER_KEY);
+  if (u) sessionStorage.removeItem(WELCOME_USER_KEY);
+  return u;
+}

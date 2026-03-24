@@ -1,6 +1,6 @@
 const REDIRECT_MS = 1800;
 
-function showRegistrationSuccess() {
+function showRegistrationSuccess(username) {
   const err = document.getElementById("err");
   const success = document.getElementById("success");
   const formBlock = document.getElementById("form-block");
@@ -11,11 +11,13 @@ function showRegistrationSuccess() {
   if (nav) nav.style.display = "none";
 
   success.textContent =
-    "Registration successful. Redirecting to the home page…";
+    "Registration successful. Redirecting to home…";
   success.style.display = "block";
 
+  setWelcomeBanner(username);
+
   setTimeout(() => {
-    window.location.href = "index.html";
+    window.location.href = "home.html";
   }, REDIRECT_MS);
 }
 
@@ -46,5 +48,5 @@ document.getElementById("register-form").addEventListener("submit", (e) => {
     return;
   }
 
-  showRegistrationSuccess();
+  showRegistrationSuccess(username);
 });

@@ -43,9 +43,10 @@ document.getElementById("login-form").addEventListener("submit", (e) => {
   }
 
   if (findUser(username, password)) {
+    setWelcomeBanner(username);
     showSuccessThenRedirect(
-      "Login successful. Redirecting to the home page…",
-      "index.html"
+      "Login successful. Redirecting to home…",
+      "home.html"
     );
     return;
   }
