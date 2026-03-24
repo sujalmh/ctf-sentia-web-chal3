@@ -1,0 +1,8 @@
+{
+  "name": "ctf-chal3-admin-gate",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "npx --yes serve -l 3000 ."
+  }
+}
